@@ -219,7 +219,7 @@ export default function HomePage() {
             <div>
               <h3 className="font-semibold mb-4">Contact Info</h3>
               <div className="space-y-2 text-gray-400">
-                <p>Phone: +232 XX XXX XXXX</p>
+                <p>Phone: +232 75 531040</p>
                 <p>Email: info@wakafine.sl</p>
                 <p>Address: Freetown, Sierra Leone</p>
               </div>
