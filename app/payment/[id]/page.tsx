@@ -37,15 +37,6 @@ export default function PaymentPage() {
 
   const loadBooking = async () => {
     try {
-      const {
-        data: { user },
-      } = await supabase.auth.getUser()
-
-      if (!user) {
-        router.push("/auth/login")
-        return
-      }
-
       const { data, error } = await supabase
         .from("bookings")
         .select(
@@ -59,7 +50,6 @@ export default function PaymentPage() {
         `,
         )
         .eq("id", bookingId)
-        .eq("user_id", user.id)
         .single()
 
       if (data && !error) {
@@ -97,12 +87,13 @@ export default function PaymentPage() {
 
       if (paymentError) throw paymentError
 
-      // Update booking payment status
+      // Update booking payment status without user check
       const { error: bookingError } = await supabase
         .from("bookings")
         .update({
           payment_status: "paid",
           qr_code: `WFB-${booking.booking_reference}`,
+          updated_at: new Date().toISOString()
         })
         .eq("id", booking.id)
 

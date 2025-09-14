@@ -1,3 +1,4 @@
+"use server"
 import { createClient as createSupabaseClient } from "@supabase/supabase-js"
 import { cookies } from "next/headers"
 

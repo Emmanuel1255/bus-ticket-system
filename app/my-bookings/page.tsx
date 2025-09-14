@@ -1,4 +1,3 @@
-import { redirect } from "next/navigation"
 import { createClient } from "@/lib/supabase/server"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -9,17 +8,7 @@ import Link from "next/link"
 export default async function MyBookingsPage() {
   const supabase = await createClient()
 
-  // Check if user is authenticated
-  const {
-    data: { user },
-    error,
-  } = await supabase.auth.getUser()
-
-  if (error || !user) {
-    redirect("/auth/login?returnUrl=/my-bookings")
-  }
-
-  // Fetch user's bookings
+  // Fetch all bookings (no user filter)
   const { data: bookings, error: bookingsError } = await supabase
     .from("bookings")
     .select(
@@ -32,7 +21,6 @@ export default async function MyBookingsPage() {
       )
     `,
     )
-    .eq("user_id", user.id)
     .order("created_at", { ascending: false })
 
   return (

@@ -23,9 +23,6 @@ export default function HomePage() {
               <Link href="/my-bookings" className="text-gray-700 hover:text-green-600 font-medium">
                 My Bookings
               </Link>
-              <Link href="/auth/login" className="text-gray-700 hover:text-green-600 font-medium">
-                Login
-              </Link>
             </nav>
           </div>
         </div>

@@ -15,17 +15,7 @@ export default async function BookingConfirmationPage({ params }: BookingConfirm
   const { id } = await params
   const supabase = await createClient()
 
-  // Check if user is authenticated
-  const {
-    data: { user },
-    error: authError,
-  } = await supabase.auth.getUser()
-
-  if (authError || !user) {
-    redirect("/auth/login")
-  }
-
-  // Fetch booking details
+  // Fetch booking details without user authentication
   const { data: booking, error } = await supabase
     .from("bookings")
     .select(
@@ -39,7 +29,6 @@ export default async function BookingConfirmationPage({ params }: BookingConfirm
     `,
     )
     .eq("id", id)
-    .eq("user_id", user.id)
     .single()
 
   if (error || !booking) {
