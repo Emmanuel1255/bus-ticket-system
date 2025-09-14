@@ -26,16 +26,23 @@ function LoginContent() {
     setIsLoading(true)
     setError(null)
 
+    console.log("[v0] Starting login process")
+
     try {
-      const { error } = await supabase.auth.signInWithPassword({
+      const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password,
       })
+
+      console.log("[v0] Login response:", { data, error })
+
       if (error) throw error
 
-      // Redirect to return URL or default page
-      router.push(returnUrl || "/my-bookings")
+      console.log("[v0] Login successful, redirecting to:", returnUrl || "/my-bookings")
+
+      window.location.href = returnUrl || "/my-bookings"
     } catch (error: unknown) {
+      console.log("[v0] Login error:", error)
       setError(error instanceof Error ? error.message : "An error occurred")
     } finally {
       setIsLoading(false)
