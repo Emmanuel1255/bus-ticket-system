@@ -5,9 +5,9 @@ import './globals.css';
 import ClientLayout from './client-layout';
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.app',
+  title: 'Waka Fine Buses',
+  description: 'Bus Ticket System',
+  generator: 'Waka Fine Buses',
 };
 
 export default function RootLayout({
