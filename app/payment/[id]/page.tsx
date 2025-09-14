@@ -190,8 +190,8 @@ export default function PaymentPage() {
                       }`}
                     >
                       <CreditCard className="w-6 h-6 text-blue-600 mb-2" />
-                      <p className="font-medium">Bank Card</p>
-                      <p className="text-sm text-gray-500">Visa, Mastercard</p>
+                      <p className="font-medium">Cash Payment</p>
+                      <p className="text-sm text-gray-500">Cash Payment</p>
                     </button>
 
                     <button
@@ -274,7 +274,7 @@ export default function PaymentPage() {
                   </div>
                 )}
 
-                {paymentMethod === "bank_transfer" && (
+                {/* {paymentMethod === "bank_transfer" && (
                   <div className="bg-blue-50 p-4 rounded-lg">
                     <h4 className="font-medium mb-2">Bank Transfer Details</h4>
                     <div className="space-y-1 text-sm">
@@ -296,7 +296,7 @@ export default function PaymentPage() {
                       transfer.
                     </p>
                   </div>
-                )}
+                )} */}
 
                 {/* Security Notice */}
                 <div className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg">
